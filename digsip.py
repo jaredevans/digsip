@@ -1,4 +1,4 @@
-__author__ = 'jared'
+__author__ = 'Jared Evans'
 
 import argparse
 import re
