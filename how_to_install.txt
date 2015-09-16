@@ -2,4 +2,9 @@ Install the python modules for DNS lookups:
 pip install -r requirements.txt
 
 Run it:
-python digsip.py
+python digsip.py -d dnsserver -p phonenumber
+
+If you find yourself using this script often, consider replacing the default values in these two lines in digsip.py:
+
+parser.add_argument("-d" , "--dnsserver", default=["replace this with your default DNS server"], nargs=1, help="DNS server to contact")
+parser.add_argument("-p" , "--phonenumber", default=["replace this with default phone number"], nargs=1, help="Phone number to look up")
