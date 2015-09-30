@@ -18,11 +18,20 @@ def digsip(dns_server, phone_number):
    naptr_results = dns.query.udp(q, dns_server)
    results = naptr_results.answer
 
+   print "======================================================================="
+   for res in results :
+	print res;
+   print "=======================================================================\n"
+
    for res in results :
        sipdomainres = re.search( r'!sip:\\\\1@(.*)!',res.to_text(), re.M|re.I)
 
-   sipdomain = sipdomainres.group(1)
-   print "SIP domain: ", sipdomain
+   if (sipdomainres) :
+     sipdomain = sipdomainres.group(1)
+     print "SIP domain: ", sipdomain
+   else :
+     print "There is no SIP iTRS entry... exiting!\n\n"
+     exit(0)
 
    q = dns.message.make_query(sipdomain, "NAPTR")
    naptr_results = dns.query.udp(q, dns_server)
